@@ -24,9 +24,6 @@ public class Url {
     @Column(nullable = false)
     private Integer clicks = 0;
 
-    @Column(name = "user_id")
-    private Long userId;
-
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 

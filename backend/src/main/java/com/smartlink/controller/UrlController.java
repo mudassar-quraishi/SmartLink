@@ -25,13 +25,18 @@ public class UrlController {
             return ResponseEntity.badRequest().body(Map.of("error", "URL must be provided"));
         }
         
-        com.smartlink.entity.Url url = urlService.generateShortLink(request.getUrl(), request.getUserId());
+        com.smartlink.entity.Url url = urlService.generateShortLink(request.getUrl());
         
         return ResponseEntity.ok(Map.of(
             "shortUrl", "http://localhost:8080/" + url.getShortCode(),
             "expiresAt", url.getExpiresAt().toString(),
             "message", "This link will automatically expire in 24 hours."
         ));
+    }
+
+    @GetMapping("/api/analytics")
+    public ResponseEntity<AnalyticsResponse> getAnalytics() {
+        return ResponseEntity.ok(urlService.getAnalytics());
     }
 
     @GetMapping("/{shortCode}")
@@ -46,12 +51,5 @@ public class UrlController {
         } else {
             return ResponseEntity.notFound().build();
         }
-    }
-    
-    @GetMapping("/api/analytics")
-    public ResponseEntity<AnalyticsResponse> getAnalytics(
-            @RequestParam(required = false) Long userId,
-            @RequestParam(required = false, defaultValue = "false") boolean isAdmin) {
-        return ResponseEntity.ok(urlService.getAnalytics(userId, isAdmin));
     }
 }

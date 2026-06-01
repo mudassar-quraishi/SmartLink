@@ -1,11 +1,7 @@
 com\smartlink\controller\UrlController.class
-com\smartlink\dto\AuthRequest.class
-com\smartlink\repository\UserRepository.class
 com\smartlink\repository\UrlRepository.class
 com\smartlink\dto\AnalyticsResponse.class
-com\smartlink\controller\AuthController.class
 com\smartlink\SmartLinkApplication.class
 com\smartlink\dto\UrlRequest.class
 com\smartlink\service\UrlService.class
 com\smartlink\entity\Url.class
-com\smartlink\entity\User.class
